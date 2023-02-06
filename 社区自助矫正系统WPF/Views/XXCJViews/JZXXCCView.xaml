@@ -1,0 +1,174 @@
+﻿<UserControl x:Class="社区自助矫正系统WPF.Views.JZXXCCView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:社区自助矫正系统WPF.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="1300">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="label">
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Right" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="FontFamily"
+                    Value="宋体" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid Margin="50" HorizontalAlignment="Center" MinWidth="1000" >
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="180"/>
+                <RowDefinition MaxHeight="150" />
+                <RowDefinition MaxHeight="150"/>
+                <RowDefinition MaxHeight="150"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="auto" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="身份证号:"
+                       Style="{StaticResource label}" />
+            <TextBox Grid.Column="1"
+                     FontSize="28"
+                     MinWidth="300"
+                     MaxWidth="500"
+                     FontFamily="宋体"
+                     VerticalAlignment="Center"
+                     Foreground="White"
+                     TextWrapping="NoWrap"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     Margin="20,0,0,0"
+                     Text="{Binding idCard}">
+            </TextBox>
+            <Button Grid.Column="2"
+                    Content="查询"
+                    FontSize="25"
+                    MinHeight="50"
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Command="{Binding ExecuteCommand}"
+                    CommandParameter="queryJzddxxByIdCard"
+                    Cursor="Hand">
+            </Button>
+            <TextBlock Text="人员编号："
+                       FontSize="25"
+                    
+                       FontFamily="宋体"
+                       Foreground="White"
+                       Grid.Row="1"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center" />
+            <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     MinWidth="300"
+                     Text="{Binding termerId}"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     Margin="20,0,0,0"
+                     Height="auto"
+                     
+                     MaxWidth="500"
+                     TextWrapping="Wrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Auto"
+                     Cursor="Arrow" />
+            <TextBlock Text="姓名："
+                       FontSize="25"
+                       Margin="50,0,0,0"
+                       FontFamily="宋体"
+                       Foreground="White"
+                       Grid.Row="1"
+                       Grid.Column="2"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="3"
+                     Text="{Binding name}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     MinWidth="300"
+                     MaxWidth="500"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     TextWrapping="NoWrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Auto"
+                     Cursor="Arrow" />
+            <TextBlock Text="文件："
+                       FontSize="25"
+                       FontFamily="宋体"
+                       Margin="30,0,0,0"
+                       Foreground="White"
+                       Grid.Row="2"
+                       Grid.Column="2"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center" />
+            <TextBox Grid.Row="2"
+                     Grid.Column="3"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     Text="{Binding avatarFile}"
+                     Height="auto"
+                     TextWrapping="Wrap"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     Foreground="White"
+                     MinWidth="300"
+                     MaxWidth="500"
+                     VerticalScrollBarVisibility="Auto" />
+            <TextBlock Text="矫正状态："
+                       FontSize="25"
+                       FontFamily="宋体"
+                       Foreground="White"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center" />
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     Text="{Binding termerStatus}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     FontSize="25"
+                     MinWidth="300"
+                     MaxWidth="500"
+                     TextWrapping="NoWrap"
+                     Foreground="White"
+                     Margin="20,0,0,0"
+                     VerticalScrollBarVisibility="Auto" />
+            <TextBlock Text="新增时间："
+                       FontSize="25"
+                       FontFamily="宋体"
+                       Foreground="White"
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center" />
+            <TextBox Grid.Row="3"
+                     Grid.Column="1"
+                     Text="{Binding createTime, StringFormat={}{0:yyyy-MM-dd HH:mm:ss}}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     MinWidth="300"
+                     MaxWidth="500"
+                     TextWrapping="NoWrap"
+                     Foreground="White"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Green"
+                     Margin="20,0,0,0"
+                     VerticalScrollBarVisibility="Auto" />
+        </Grid>
+    </Grid>
+</UserControl>

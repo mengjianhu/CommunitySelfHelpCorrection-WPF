@@ -1,0 +1,133 @@
+﻿<Window x:Class="社区自助矫正系统WPF.Views.XXCXView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:local="clr-namespace:社区自助矫正系统WPF.Views"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:ext="clr-namespace:社区自助矫正系统WPF.Extensions"
+        mc:Ignorable="d"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="XXCXView"
+        Height="1080"
+        Width="1920"
+        Background="{DynamicResource MaterialDesignPaper}"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        x:Name="xxcxForm">
+    <materialDesign:DialogHost x:Name="DialogHost">
+        <Grid Cursor="Hand">
+            <Image Source="/Images/background_query(1).png"
+                   Stretch="Fill" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="161.75" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btn_close"
+                            Content="返回"
+                            FontSize="30"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            MinHeight="50"
+                            Width="150"
+                            Command="{Binding NavigateCommandClose}"
+                            CommandParameter="{Binding ElementName=xxcxForm}"
+                            Cursor="Hand" />
+
+                    <!--<StackPanel Grid.Row="0"
+                                Width="500"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                        <Button Margin="24,0,0,0"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
+                                Command="{Binding GoBackCommand}"
+                                Content="{materialDesign:PackIcon Kind=ArrowLeft, Size=30}"
+                                Cursor="Hand"
+                                Foreground="White"
+                                Style="{DynamicResource MaterialDesignToolButton}"
+                                ToolTip="上一步" />
+
+                        <Button Margin="50,0,0,0"
+                                materialDesign:RippleAssist.Feedback="{Binding RelativeSource={RelativeSource Self}, Path=Foreground, Converter={StaticResource BrushRoundConverter}}"
+                                Command="{Binding GoForwardCommand}"
+                                Content="{materialDesign:PackIcon Kind=ArrowRight,Size=30}"
+                                Foreground="White"
+                                Style="{DynamicResource MaterialDesignToolButton}"
+                                ToolTip="上一步"
+                                Cursor="Hand" />
+                    </StackPanel>-->
+                    <TextBlock  Text="{Binding navJouName}"
+                                FontSize="30"
+                                FontFamily="宋体"
+                                Foreground="White"
+                                Margin="20,0,0,0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                    <Line X1="0"
+                          Y1="161.75"
+                          X2="1920"
+                          Y2="161.75"
+                          Stroke="BlueViolet"
+                          StrokeThickness="10"></Line>
+                    <!--区域注册-->
+                        <ContentControl Grid.Row="1"
+                                    x:Name="cmr"
+                                    prism:RegionManager.RegionName="{x:Static ext:PrismManager.XXCXViewRegionName}" />
+                </Grid>
+                <DockPanel MinWidth="220">
+                    <StackPanel Margin="0,10"
+                                DockPanel.Dock="Top">
+
+                        <Image Width="100"
+                               Height="100"
+                               Source="/Images/123.png"
+                               Cursor="Arrow">
+                        </Image>
+                        <TextBlock Margin="0,10"
+                                   HorizontalAlignment="Center"
+                                   Foreground="White"
+                                   FontSize="25"
+                                   Text="信息查询"
+                                   FontFamily="微软雅黑"
+                                   Cursor="Arrow" />
+                    </StackPanel>
+
+                    <ListBox x:Name="menuBar"
+                             ItemContainerStyle="{StaticResource MyListBoxItemStyle}"
+                             ItemsSource="{Binding XXCXMenuBars}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="SelectionChanged">
+                                <i:InvokeCommandAction Command="{Binding NavigateCommand}"
+                                                       CommandParameter="{Binding ElementName=menuBar,Path=SelectedItem}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Background="Transparent"
+                                            Orientation="Horizontal">
+                                    <materialDesign:PackIcon Margin="15,28"
+                                                             Kind="{Binding Icon}" />
+                                    <TextBlock Margin="15,20"
+                                               Text="{Binding Title}"
+                                               FontSize="25" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </materialDesign:DialogHost>
+
+</Window>

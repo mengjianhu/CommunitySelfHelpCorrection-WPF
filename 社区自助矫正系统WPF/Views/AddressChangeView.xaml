@@ -1,0 +1,236 @@
+﻿<Window x:Class="社区自助矫正系统WPF.Views.AddressChangeView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:Interaction="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:local="clr-namespace:社区自助矫正系统WPF.Views"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:controls="clr-namespace:社区自助矫正系统WPF.Controls"
+        mc:Ignorable="d"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="AddressChangView"
+        Height="800"
+        Width="1280"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        x:Name="addressChange">
+    <Window.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="label">
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Right" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="FontFamily"
+                    Value="宋体" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Image Source="/Images/background.png"
+               Stretch="Fill" />
+        <Grid MaxWidth="1200"
+              MaxHeight="780"
+              Margin="0,100,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition  />
+                <ColumnDefinition  Width="auto" />
+                <ColumnDefinition  />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="人员编号："
+                       Style="{StaticResource label}" />
+            <TextBox Grid.Column="1"
+                     Margin="20,0,0,0"
+                     Height="auto"
+                     Text="{Binding termerId}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     FontSize="25"
+                     MinWidth="300"
+                     MaxWidth="320"
+                   
+                     TextWrapping="NoWrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Auto"
+                     Cursor="Arrow" />
+            <TextBlock Text="身份证号："
+                       Grid.Column="2"
+                       Style="{StaticResource label}"
+                       HorizontalAlignment="Right" />
+            <TextBox Grid.Column="3"
+                     Height="auto"
+                     MinWidth="300"
+                     MaxWidth="320"
+                     Margin="20,0,0,0"
+                     Text="{Binding idCard}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Left"
+                     FontSize="25"
+                     
+                     TextWrapping="NoWrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Disabled"
+                     Cursor="Arrow" />
+            <TextBlock Text="申请理由："
+                       Grid.Row="1"
+                       Grid.Column="0"
+                       Style="{StaticResource label}" />
+            <TextBox Grid.Row="1"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     MinWidth="150"
+                     MaxLength="2000"
+                     Text="{Binding applyReason}"
+                    
+                     Margin="20,0,0,0"
+                     MinHeight="50"
+                     Height="auto"
+                     Width="auto"
+                     TextWrapping="Wrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Auto"
+                     Cursor="Arrow" />
+            <TextBlock Text="附件："
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       Style="{StaticResource label}" />
+            <TextBox Grid.Row="2"
+                     Grid.Column="1"
+                     HorizontalAlignment="Left"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     IsReadOnly="True"
+                     MinWidth="300"
+                     Text="{Binding applyFileIds}"
+                     materialDesign:TextFieldAssist.UnderlineBrush="#96989C"
+                     Margin="20,0,0,0"
+                     MinHeight="50"
+                     Height="auto"
+                     Width="auto"
+                     TextWrapping="Wrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Auto"
+                     Cursor="Arrow" /> 
+            <Button Grid.Column="2"
+                    Grid.Row="2"
+                    Content="选择附件"
+                    FontSize="25"
+                    MinHeight="50"
+                    Cursor="Hand"
+                    Margin="30,0,30,0"
+                    Command="{Binding ExecuteCommandFiles}"/>
+            <TextBlock Text="是否迁出至省外："
+                       Grid.Row="3"
+                       Grid.Column="0"
+                       Style="{StaticResource label}" />
+            <ComboBox Grid.Column="1"
+                      Grid.Row="3"
+                      HorizontalAlignment="Left"
+                      Width="300"
+                      VerticalAlignment="Center"
+                      Margin="20,0,0,0"
+                      FontSize="25"
+                      Foreground="White"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      ItemsSource="{Binding comSfqczsw}"
+                      SelectedItem="{Binding selectItemVall }"
+                      DisplayMemberPath="name"
+                      SelectedIndex="{Binding selectIndexVal}">
+
+            </ComboBox>
+            <TextBlock Text="目的地："
+                       Grid.Row="4"
+                       Grid.Column="0"
+                       Style="{StaticResource label}" />
+            <controls:MyPCAT HorizontalAlignment="Left"                             
+                             Grid.Row="4"
+                             x:Name="mypcat1"
+                             Margin="20,0,0,0"
+                             VerticalAlignment="Center"
+                             Grid.Column="1"
+                             Grid.ColumnSpan="3">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="PCAData_enent">
+                        <i:InvokeCommandAction Command="{Binding ExecuteCommand}" CommandParameter="test123"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                
+            </controls:MyPCAT>
+            <TextBlock Text="目的地明细："
+                       Grid.Row="5"
+                       Grid.Column="0"
+                       Style="{StaticResource label}" />
+            <TextBox Grid.Row="5"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     Text="{Binding destinationDetail}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     FontSize="25"
+                     MinWidth="150"
+                     MaxLength="100"
+                     Margin="20,0,0,0"
+                     MinHeight="50"
+                     Height="auto"
+                     Width="auto"
+                     TextWrapping="Wrap"
+                     Foreground="White"
+                     VerticalScrollBarVisibility="Auto"
+                     Cursor="Arrow"
+                     x:Name="textDetail" />
+            <Button Grid.Row="6"
+                    Content="保存"
+                    FontSize="25"
+                    MinHeight="60"
+                    Margin="0,0,0,20"
+                    Cursor="Hand"
+                    Background="#FF56B73A"
+                    BorderBrush="#FF56B73A"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    MinWidth="150"
+                    MaxWidth="200"
+                    Command="{Binding ExecuteCommand}"
+                    CommandParameter="{Binding ElementName=addressChange}" />
+            <Button Grid.Row="6"
+                    Grid.Column="3"
+                    Margin="0,0,0,20"
+                    Content="返回"
+                    MinHeight="60"
+                    FontSize="25"
+                    MinWidth="150"
+                    HorizontalAlignment="Right"
+                    Cursor="Hand"
+                    VerticalAlignment="Bottom"
+                    Command="{Binding ExecuteCommandClose}"
+                    CommandParameter="{Binding ElementName=addressChange}"
+                    Style="{StaticResource MaterialDesignOutlinedButton}" />
+
+
+        </Grid>
+      
+    </Grid>
+</Window>

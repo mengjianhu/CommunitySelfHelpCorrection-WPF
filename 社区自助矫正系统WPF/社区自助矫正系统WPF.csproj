@@ -1,0 +1,162 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		 
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<UseWindowsForms>true</UseWindowsForms>
+		<Platforms>AnyCPU;x86</Platforms>
+		<Nullable>disable</Nullable>
+		<ApplicationIcon>123-1种尺寸.ico</ApplicationIcon>
+		<StartupObject />
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	  <PlatformTarget>x86</PlatformTarget>
+	  <Prefer32Bit>true</Prefer32Bit>
+	  <WarningLevel>4</WarningLevel>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <Optimize>false</Optimize>
+	  <DefineConstants>TRACE</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+	  <PlatformTarget>AnyCPU</PlatformTarget>
+	  <Prefer32Bit>false</Prefer32Bit>
+	  <WarningLevel>4</WarningLevel>
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	  <OutputPath>bin\Debug\net5.0-windows\</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	  <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="App.xaml~RF16845eb.TMP" />
+		<None Remove="Images\011.png" />
+		<None Remove="Images\123.png" />
+		<None Remove="Images\background.png" />
+		<None Remove="Images\background_query%281%29.png" />
+		<None Remove="Images\background_query.png" />
+		<None Remove="Images\bac_query.bmp" />
+		<None Remove="Images\btnbg.png" />
+		<None Remove="Images\btn_bag.png" />
+		<None Remove="Images\cardv0.png" />
+		<None Remove="Images\cardv1.png" />
+		<None Remove="Images\cjBg1.png" />
+		<None Remove="Images\cjBg2.png" />
+		<None Remove="Images\haishangsehgmingyue.gif" />
+		<None Remove="Images\IDCardMatchBg.jpg" />
+		<None Remove="Images\login.png" />
+		<None Remove="Images\loginBg.jpg" />
+		<None Remove="Images\main-bg.png" />
+		<None Remove="Images\Nodata-.bmp" />
+		<None Remove="Images\人像采集.png" />
+		<None Remove="Images\信息查询.png" />
+		<None Remove="Images\信息采集.png" />
+		<None Remove="Images\公益活动登记.png" />
+		<None Remove="Images\右手拇指.bmp" />
+		<None Remove="Images\右手拇指.png" />
+		<None Remove="Images\声纹采集.png" />
+		<None Remove="Images\居住地变更登记.png" />
+		<None Remove="Images\帮扶信息登记.png" />
+		<None Remove="Images\执行地变更.png" />
+		<None Remove="Images\报到登记.png" />
+		<None Remove="Images\报到登记1.png" />
+		<None Remove="Images\指纹采集.png" />
+		<None Remove="Images\教育学习登记.png" />
+		<None Remove="Images\日常报到.png" />
+		<None Remove="Images\查询.jpg" />
+		<None Remove="Images\社区服务登记.png" />
+		<None Remove="Images\签到.png" />
+		<None Remove="Images\请销假.png" />
+		<None Remove="Images\身份核验.png" />
+		<None Remove="Images\销假登记.png" />
+		<None Remove="Views\VideoShow\OpenCVSharpVideo.xaml~RFd4baf.TMP" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MaterialDesignThemes" Version="4.5.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="OpenCvSharp4" Version="4.6.0.20220608" />
+		<PackageReference Include="OpenCvSharp4.Extensions" Version="4.6.0.20220608" />
+		<PackageReference Include="OpenCvSharp4.runtime.win" Version="4.6.0.20220608" />
+		<PackageReference Include="Panuon.WPF.UI" Version="1.1.3" />
+		<PackageReference Include="Prism.DryIoc" Version="8.1.97" />
+		<PackageReference Include="System.Speech" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Authorization\Authorization.csproj" />
+		<ProjectReference Include="..\HelperUnit\HelperUnit.csproj" />
+		<ProjectReference Include="..\InterFaceRequestInfoService\InterFaceRequestInfoService.csproj" />
+		<ProjectReference Include="..\InterFaceRequestInfo\InterFaceRequestInfo.csproj" />
+		<ProjectReference Include="..\InterfaceReturnEntity\InterfaceReturnEntity.csproj" />
+		<ProjectReference Include="..\RainHelper\RainHelper.csproj" />
+		<ProjectReference Include="..\ZKFingerLive20R\ZKFingerLive20R.csproj" />
+		<ProjectReference Include="..\ZKFinger\ZKFinger.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="FaceMatchDll">
+	    <HintPath>..\..\..\社区自助矫正系统V220801\社区自助矫正系统V2201\社区自助矫正系统V2201\bin\x64\Debug\FaceMatchDll.dll</HintPath>
+	  </Reference>
+	  <Reference Include="NAudio">
+	    <HintPath>bin\Debug\net5.0-windows\NAudio.dll</HintPath>
+	  </Reference>
+	  <Reference Include="SQIDCardHelper">
+	    <HintPath>bin\Debug\net5.0-windows\SQIDCardHelper.dll</HintPath>
+	  </Reference>
+	  <Reference Include="VoiceHelper">
+	    <HintPath>bin\Debug\net5.0-windows\VoiceHelper.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Images\011.png" />
+		<Resource Include="Images\123.png" />
+		<Resource Include="Images\background.png" />
+		<Resource Include="Images\background_query(1).png" />
+		<Resource Include="Images\background_query.png" />
+		<Resource Include="Images\bac_query.bmp" />
+		<Resource Include="Images\btnbg.png" />
+		<Resource Include="Images\btn_bag.png" />
+		<Resource Include="Images\cardv0.png" />
+		<Resource Include="Images\cardv1.png" />
+		<Resource Include="Images\cjBg1.png" />
+		<Resource Include="Images\cjBg2.png" />
+		<Resource Include="Images\haishangsehgmingyue.gif" />
+		<Resource Include="Images\IDCardMatchBg.jpg" />
+		<Resource Include="Images\login.png" />
+		<Resource Include="Images\loginBg.jpg" />
+		<Resource Include="Images\main-bg.png" />
+		<Resource Include="Images\Nodata-.bmp" />
+		<Resource Include="Images\人像采集.png" />
+		<Resource Include="Images\信息查询.png" />
+		<Resource Include="Images\信息采集.png" />
+		<Resource Include="Images\公益活动登记.png" />
+		<Resource Include="Images\右手拇指.png" />
+		<Resource Include="Images\声纹采集.png" />
+		<Resource Include="Images\居住地变更登记.png" />
+		<Resource Include="Images\帮扶信息登记.png" />
+		<Resource Include="Images\执行地变更.png" />
+		<Resource Include="Images\报到登记.png" />
+		<Resource Include="Images\报到登记1.png" />
+		<Resource Include="Images\指纹采集.png" />
+		<Resource Include="Images\教育学习登记.png" />
+		<Resource Include="Images\日常报到.png" />
+		<Resource Include="Images\查询.jpg" />
+		<Resource Include="Images\社区服务登记.png" />
+		<Resource Include="Images\签到.png" />
+		<Resource Include="Images\请销假.png" />
+		<Resource Include="Images\身份核验.png" />
+		<Resource Include="Images\销假登记.png" />
+	</ItemGroup>
+
+</Project>

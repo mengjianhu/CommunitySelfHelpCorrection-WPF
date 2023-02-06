@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="社区自助矫正系统WPF.Views.XXCJViews.EduInfoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:社区自助矫正系统WPF.Views.XXCJViews"
+             mc:Ignorable="d"
+             d:DesignHeight="450"
+             d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="150"
+                           Height="*" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Width="auto">
+            <TextBlock FontSize="30"
+                       Foreground="white"
+                       Text="考勤类型："
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center" />
+            <ComboBox Width="auto"
+                      MinWidth="150"
+                      FontSize="30"
+                      Foreground="White"
+                      Margin="20"
+                      ItemsSource="{Binding comlist}"
+                      DisplayMemberPath="name"
+                      SelectedItem="{Binding kk}"
+                      SelectedIndex="{Binding selectValIndex}"/>
+
+
+            <Button Content="查询"
+                    FontSize="30"
+                    Height="auto"
+                    MinWidth="150"
+                    Cursor="Hand"
+                    Margin="20"
+                    Command="{Binding ExcuteCommand }"
+                    CommandParameter="queryEndcationInfo" />
+        </StackPanel>
+        <DataGrid Background="Transparent"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Stretch"
+                   RowDetailsVisibilityMode="Collapsed"
+                  GridLinesVisibility="None"
+                  x:Name="datagrid"
+                  Grid.Row="1"
+                  Margin="20"
+                  ItemsSource="{Binding EducationInfo}"
+                  IsReadOnly="True"
+                  AllowDrop="True"
+                  FontSize="30"
+                  Foreground="White"
+                  Cursor="Hand"
+                  ColumnWidth="*"
+                  AutoGenerateColumns="False"
+                  CanUserReorderColumns="False"
+                  CanUserResizeColumns="False"
+                  IsSynchronizedWithCurrentItem="False"                  
+                  SelectionUnit="FullRow"
+                  SelectionMode="Single"
+                  MouseDoubleClick="datagrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="集中教育"
+                                    Binding="{Binding id}" />
+                <DataGridTextColumn Header="申请时间"
+                                    Binding="{Binding time}" />
+                <DataGridTextColumn Header="内容"
+                                    Binding="{Binding content}"
+                                    MaxWidth="250" />
+                <DataGridTextColumn Header="地点"
+                                    Binding="{Binding address}"
+                                    MaxWidth="200" />
+                <DataGridTextColumn Header="类型"
+                                    Binding="{Binding type}" />
+                <DataGridTextColumn Header="开始时间"
+                                    Binding="{Binding startTime}" />
+                <DataGridTextColumn Header="结束时间"
+                                    Binding="{Binding endTime}" />
+            </DataGrid.Columns>
+
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderBrush" Value="BlueViolet">
+                       
+                        
+                    </Setter>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+
+
+
+    </Grid>
+</UserControl>

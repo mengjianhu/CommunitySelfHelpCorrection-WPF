@@ -1,0 +1,337 @@
+﻿<Window x:Class="社区自助矫正系统WPF.Views.FingerCjZkFinger0View"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        xmlns:wfi="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:local="clr-namespace:社区自助矫正系统WPF.Views"
+        WindowStyle="None"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        Title="FingerCjZkFinger0View"
+        Loaded="Window_Loaded"
+        Height="1080"
+        Width="1920">
+    <Window.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="label">
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="FontFamily"
+                    Value="宋体" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize"
+                    Value="25" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="FontFamily"
+                    Value="宋体" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Left" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Image Source="/Images/background.png" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="135" />
+                <RowDefinition Height="135" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Button Style="{StaticResource MaterialDesignOutlinedButton}"
+                    VerticalAlignment="Top"
+                     Width="150"
+                     HorizontalAlignment="Right"
+                     Content="返回"
+                     FontSize="25"
+                     Height="50"
+                     x:Name="btn_close"
+                     Click="btn_close_Click"
+                     />
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="555"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition  Width="400"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="400"/>
+                    <ColumnDefinition   />
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="身份证号：" Grid.Column="1" Style="{StaticResource label}"/>
+                <TextBox Grid.Column="2"
+                         x:Name="txt_sfzh"
+                         Margin="20,0,0,0"
+                         Height="auto"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         FontSize="25"
+                         MinWidth="300"
+                         MaxWidth="400"
+                         TextWrapping="NoWrap"
+                         Foreground="White"
+                         VerticalScrollBarVisibility="Auto"
+                         Cursor="Arrow" />
+                <TextBlock Text="人员编号："
+                           Grid.Column="3" HorizontalAlignment="Left"
+                           Style="{StaticResource label}" />
+                <TextBox Grid.Column="4"
+                         Margin="20,0,0,0"
+                         x:Name="txt_rybh"
+                         Height="auto"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Left"
+                         FontSize="25"
+                         MinWidth="300"
+                         MaxWidth="400"
+                         TextWrapping="NoWrap"
+                         Foreground="White"
+                         VerticalScrollBarVisibility="Auto"
+                         Cursor="Arrow" />
+                <Button  Grid.Column="5" Content="读取身份证" FontSize="25" Width="200" Height="50" FontFamily="宋体" x:Name="btn_readCard" Click="btn_readCard_Click"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="500" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="指纹预览"
+                               FontSize="28"
+                               FontFamily="宋体"
+                               Margin="125,0,0,0"
+                               Foreground="White"
+                               
+                               VerticalAlignment="Bottom" />
+                    <WindowsFormsHost x:Name="windowsFormsHost2"
+                                      Height="304"
+                                      Width="250"
+                                      Grid.Row="1">
+                        <wf:PictureBox x:Name="picFinger"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None" />
+                    </WindowsFormsHost>
+                    <StackPanel Grid.Row="2"
+                                Orientation="Horizontal">
+                        <TextBlock Text="指纹质量："
+                                   FontSize="25"
+                                   FontFamily="宋体"
+                                   Foreground="White" />
+                        <ProgressBar  Width="280"
+                                      VerticalAlignment="Top"
+                                      Height="30"
+                                      x:Name="progressBar1"
+                                      Style="{x:Null}" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1"
+                      Margin="0,20,50,150">
+                    <Grid.RowDefinitions>
+                        <RowDefinition  Height="auto" />
+                        <RowDefinition Height="100" />
+                        <RowDefinition Height="auto"  />
+                        <RowDefinition Height="100" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <WindowsFormsHost x:Name="windowsFormsHostzw1"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="0">
+                        <wf:PictureBox x:Name="PLANE_LEFT_116"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       Tag="PLANE_LEFT_116"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick"
+                                       />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="左手拇指"
+                                Grid.Row="1"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzw2"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="0"
+                                      Grid.Column="1">
+                        <wf:PictureBox x:Name="PLANE_LEFT_217"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick"
+                                       Tag="PLANE_LEFT_217"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="左手食指"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzw3"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="0"
+                                      Grid.Column="2">
+                        <wf:PictureBox x:Name="PLANE_LEFT_318"
+                                       Click="PLANE_LEFT_116_Click"
+                                       Tag="PLANE_LEFT_318"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="左手中指"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzw4"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="0"
+                                      Grid.Column="3">
+                        <wf:PictureBox x:Name="PLANE_LEFT_419"
+                                       Tag="PLANE_LEFT_419"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="左手无名指"
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzw5"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="0"
+                                      Grid.Column="4">
+                        <wf:PictureBox x:Name="PLANE_LEFT_520"
+                                       Tag="PLANE_LEFT_520"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="左手小拇指"
+                                Grid.Row="1"
+                                Grid.Column="4"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzwr1"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="2"
+                                      Grid.Column="0"
+                                     >
+                        <wf:PictureBox x:Name="PLANE_RIGHT_111"
+                                       Tag="PLANE_RIGHT_111"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="右手拇指"
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzwr2"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="2"
+                                      Grid.Column="1">
+                        <wf:PictureBox x:Name="PLANE_RIGHT_212"
+                                       Tag="PLANE_RIGHT_212"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="右手食指"
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzwr3"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="2"
+                                      Grid.Column="2">
+                        <wf:PictureBox x:Name="PLANE_RIGHT_313"
+                                       Tag="PLANE_RIGHT_313"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="右手中指"
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzwr4"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="2"
+                                      Grid.Column="3">
+                        <wf:PictureBox x:Name="PLANE_RIGHT_414"
+                                       Tag="PLANE_RIGHT_414"  
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="右手无名指"
+                                Grid.Row="3"
+                                Grid.Column="3"
+                                Style="{StaticResource label}" />
+                    <WindowsFormsHost x:Name="windowsFormsHostzwr5"
+                                      Height="170"
+                                      Width="168"
+                                      Grid.Row="2"
+                                      Grid.Column="4">
+                        <wf:PictureBox x:Name="PLANE_RIGHT_515"
+                                       Tag="PLANE_RIGHT_515"
+                                       SizeMode="Zoom"
+                                       BorderStyle="None"
+                                       Click="PLANE_LEFT_116_Click"
+                                       MouseDoubleClick="PLANE_LEFT_116_MouseDoubleClick" />
+                    </WindowsFormsHost>
+                    <TextBlock  Text="右手小拇指"
+                                Grid.Row="3"
+                                Grid.Column="4"
+                                Style="{StaticResource label}" />
+                   
+                </Grid>
+                <Button  Content="上传指纹信息" Grid.Column="1"
+                         x:Name="btn_upload"
+                         HorizontalAlignment="Right"
+                         VerticalAlignment="Bottom" 
+                         FontSize="25"
+                         FontFamily="宋体"
+                         Width="200"
+                         Height="50"
+                         Margin="100,150"
+                         Click="btn_upload_Click"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
